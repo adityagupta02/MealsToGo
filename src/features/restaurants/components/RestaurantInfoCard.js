@@ -10,7 +10,7 @@ export default function RestaurantInfoCard(props) {
   const ratingArray = Array.from(new Array(Math.floor(props.data.rating)));
   return (
     <>
-    <View style = {{margin:15,}}>
+    <View style = {{margin:15}}>
         <Card elevation={10} onPress={()=>{}}>   
           <Card.Cover source={{ uri: props.data.photos[0]}} />
           <Card.Content>
