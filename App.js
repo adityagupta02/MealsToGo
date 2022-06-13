@@ -1,15 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from "react-native";
-import Restaurant_screen from './src/features/restaurants/components/Restaurant_screen';
+import RestaurantScreen from './src/features/restaurants/components/RestaurantScreen';
 
 export default function App() {
   return (
     <>
-      <Restaurant_screen/>      
+      <RestaurantScreen/>    
     </>
   )
 }
-
 const styles = StyleSheet.create({
   
 });
