@@ -1,8 +1,9 @@
 import React, {useContext} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, ScrollView, FlatList} from "react-native";
+import { StyleSheet, View, SafeAreaView, StatusBar, FlatList} from "react-native";
 import { Searchbar } from "react-native-paper";
 import { RestaurantsContext } from '../../../services/restaurants/RestaurantContext';
 import RestaurantInfoCard from './RestaurantInfoCard';
+import { ActivityIndicator, Colors } from 'react-native-paper';
 
 export default function RestaurantScreen() {
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -18,14 +19,18 @@ export default function RestaurantScreen() {
   //   isClosedTemporarily:false,
   // };
   const restaurantContext = useContext(RestaurantsContext);
-
   return (
     <>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.searchBar}>
+      <SafeAreaView style={styles.container}>       
+        <View style = {styles.searchBar}>
           <Searchbar placeholder="Search" onChangeText={onChangeSearch} value={searchQuery}/>
         </View>
-        <View style={{ flex: 1, backgroundColor: "white" }}>
+        {restaurantContext.isLoading && (
+          <View style={{position:"absolute", top:"50%", left:"50%"}}>
+            <ActivityIndicator size={50} style={{marginLeft:-25}} animating={true} color={Colors.blue300}/> 
+            </View>      
+         )}
+        <View style={{ flex: 1 }}>
           <FlatList data={restaurantContext.restaurants} 
             renderItem={({item})=>(<RestaurantInfoCard data={item}/>)}
             keyExtractor={(item)=>item.name}/>
@@ -43,7 +48,6 @@ const styles = StyleSheet.create({
   searchBar: {
     height:80,
     justifyContent: "center",
-    // backgroundColor:"powderblue",
     padding:15,
   },
 });

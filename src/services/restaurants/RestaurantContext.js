@@ -22,7 +22,7 @@ export const RestaurantsContextProvider = (props) => {
           setIsLoading(false);
           setError(err);
         });
-    }, 1000);
+    }, 2000);
     
   };
 
