@@ -25,11 +25,12 @@ export default function RestaurantInfoCard(props) {
                     {props.data.isOpenNow && <SvgXml xml = {open} height={20} width = {20}/>}
               </View>
             </View>
-
-            <Text>{props.data.address}</Text>
+            <Text>{props.data.vicinity}</Text>
           </Card.Content>
         </Card>
         </View>
     </>
   );
 }
+
+

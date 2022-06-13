@@ -1,9 +1,11 @@
 import React from 'react';
+import { RestaurantRequest } from './src/services/restaurants/RestaurantRequest';
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from "react-native";
 import RestaurantScreen from './src/features/restaurants/components/RestaurantScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Ionicons} from '@expo/vector-icons';
+import { RestaurantsContextProvider } from './src/services/restaurants/RestaurantContext';
 
 function HomeScreen() {
   return (
@@ -48,7 +50,7 @@ function MyTabs() {
           tabBarInactiveTintColor: 'gray',
         })}
       >
-      <Tab.Screen name="Restaurants" component={HomeScreen} />      
+      <Tab.Screen name="Restaurants" component={HomeScreen} options={{headerShown:false}} />      
       <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
@@ -58,9 +60,12 @@ function MyTabs() {
 export default function App() {
   return (
     <>
-    <NavigationContainer>
-      <MyTabs/>
-    </NavigationContainer>
+    {/* <RestaurantRequest/> */}
+    <RestaurantsContextProvider>
+      <NavigationContainer>
+        <MyTabs/>
+      </NavigationContainer>
+    </RestaurantsContextProvider>
     </>
   )
 }
