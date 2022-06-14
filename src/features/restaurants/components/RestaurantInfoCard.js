@@ -16,8 +16,8 @@ export default function RestaurantInfoCard(props) {
           <Card.Content>
             <Title  style={{marginTop:10, fontFamily:""}}>{props.data.name}</Title>
             <View style={{flex: 1,flexDirection:'row', paddingLeft:0 ,padding:4}}>
-              {ratingArray.map(()=>(
-                <SvgXml xml = {star} height={20} width = {20}/>
+              {ratingArray.map((_,i)=>(
+                <SvgXml key={`star-${i}`} xml = {star} height={20} width = {20}/>
               ))}
               
               <View style={{flex:1, alignItems:"flex-end"}}>

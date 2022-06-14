@@ -1,13 +1,11 @@
 import React, {useContext} from 'react';
 import { StyleSheet, View, SafeAreaView, StatusBar, FlatList} from "react-native";
-import { Searchbar } from "react-native-paper";
 import { RestaurantsContext } from '../../../services/restaurants/RestaurantContext';
 import RestaurantInfoCard from './RestaurantInfoCard';
 import { ActivityIndicator, Colors } from 'react-native-paper';
+import { SearchComponent } from './SearchComponent';
 
 export default function RestaurantScreen() {
-  const [searchQuery, setSearchQuery] = React.useState("");
-  const onChangeSearch = (query) => setSearchQuery(query);
 
   // const restaurant = {
   //   name : "Taj Hotel",
@@ -22,9 +20,9 @@ export default function RestaurantScreen() {
   return (
     <>
       <SafeAreaView style={styles.container}>       
-        <View style = {styles.searchBar}>
-          <Searchbar placeholder="Search" onChangeText={onChangeSearch} value={searchQuery}/>
-        </View>
+        
+      <SearchComponent/>
+
         {restaurantContext.isLoading && (
           <View style={{position:"absolute", top:"50%", left:"50%"}}>
             <ActivityIndicator size={50} style={{marginLeft:-25}} animating={true} color={Colors.blue300}/> 
@@ -44,10 +42,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight,
-  },
-  searchBar: {
-    height:80,
-    justifyContent: "center",
-    padding:15,
   },
 });

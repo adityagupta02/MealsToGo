@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Ionicons} from '@expo/vector-icons';
 import { RestaurantsContextProvider } from './src/services/restaurants/RestaurantContext';
+import { LocationContextProvider } from './src/services/location/LocationContext';
 
 function HomeScreen() {
   return (
@@ -59,13 +60,14 @@ function MyTabs() {
 
 export default function App() {
   return (
-    <>
-    {/* <RestaurantRequest/> */}
-    <RestaurantsContextProvider>
-      <NavigationContainer>
-        <MyTabs/>
-      </NavigationContainer>
-    </RestaurantsContextProvider>
+    <>   
+      <LocationContextProvider>
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <MyTabs/>
+          </NavigationContainer>
+        </RestaurantsContextProvider>
+      </LocationContextProvider>
     </>
   )
 }
