@@ -1,10 +1,14 @@
 import React from 'react'
 import { View } from 'react-native'
 
-export default function MapCallout(props) {
+import CompactRestaurantInfo from '../../restaurants/components/CompactRestaurantInfo'
+
+export default function MapCallout({restaurant}) {
   return (
     <>
-    
+      <CompactRestaurantInfo restaurant={restaurant} />
     </>
   )
 }
+
+
