@@ -6,7 +6,7 @@ export const LocationContext = createContext();
 
 export const LocationContextProvider = (props)=>{  
   const [location, setLocation] = useState(null);
-  const [keyword, setKeyword] = useState("san francisco");
+  const [keyword, setKeyword] = useState("San Francisco");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -20,7 +20,6 @@ export const LocationContextProvider = (props)=>{
     .then((result)=>{
         setIsLoading(false);
         setLocation(result);
-        // console.log(JSON.stringify(result));
     }).catch((error) => {
         setIsLoading(false);
         setError(error);

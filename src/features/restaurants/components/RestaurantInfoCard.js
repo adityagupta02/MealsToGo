@@ -7,7 +7,7 @@ import open from "../../../../assets/open";
 
 export default function RestaurantInfoCard(props) {
 
-  const ratingArray = Array.from(new Array(Math.floor(props.data.rating)));
+  const ratingArray = Array.from(new Array(Math.floor(Math.min(5,props.data.rating))));
   return (
     <>
     <View style = {{margin:15}}>
