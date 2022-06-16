@@ -2,11 +2,10 @@ import { isLoading } from "expo-font";
 import { createContext, useContext, useState, useEffect } from "react";
 
 import { locationRequest, locationTransform } from "./LocationService";
-
 export const LocationContext = createContext();
 
-export const LocationContextProvider = (props)=>{    
-  const [location, setLocation] = useState(null);     
+export const LocationContextProvider = (props)=>{  
+  const [location, setLocation] = useState(null);
   const [keyword, setKeyword] = useState("san francisco");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
