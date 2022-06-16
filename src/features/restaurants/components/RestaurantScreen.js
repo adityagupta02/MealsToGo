@@ -8,7 +8,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function RestaurantScreen({navigation}) {
   const restaurantContext = useContext(RestaurantsContext);
-  console.log(navigation);
   return (
     <>
       <SafeAreaView style={styles.container}>
