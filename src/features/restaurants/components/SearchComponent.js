@@ -7,21 +7,16 @@ export const SearchComponent = () => {
   const locationContext = useContext(LocationContext);
   const [searchQuery, setSearchQuery] = React.useState(locationContext.keyword);
 
-//   useEffect(()=>{
-//     locationContext.search(searchQuery);
-//   },[]);
-
-//   console.log(locationContext);
   return (
     <View style={{ height: 80, justifyContent: "center", padding: 15 }}>
       <Searchbar
         placeholder="Search"
         value={searchQuery}
-        onSubmitEditing={()=>{
-            locationContext.search(searchQuery);
+        onSubmitEditing={() => {
+          locationContext.search(searchQuery);
         }}
-        onChangeText={(text)=>{
-            setSearchQuery(text);
+        onChangeText={(text) => {
+          setSearchQuery(text);
         }}
       />
     </View>

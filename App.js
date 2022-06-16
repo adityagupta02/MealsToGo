@@ -1,5 +1,4 @@
 import React from 'react';
-import { RestaurantRequest } from './src/services/restaurants/RestaurantRequest';
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from "react-native";
 
 import { RestaurantsContextProvider } from './src/services/restaurants/RestaurantContext';

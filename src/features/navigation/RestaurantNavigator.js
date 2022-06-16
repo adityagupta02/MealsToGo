@@ -1,6 +1,7 @@
 import React from 'react'
-import RestaurantScreen from './src/features/restaurants/components/RestaurantScreen';
 import {createStackNavigator} from "@react-navigation/stack";
+import RestaurantScreen from '../restaurants/components/RestaurantScreen';
+
 
 const RestaurantStack = createStackNavigator();
 
@@ -8,8 +9,9 @@ export const RestaurantNavigator = ()=>{
     return(
         <RestaurantStack.Navigator>
             <RestaurantStack.Screen
-                name = "Restaurant"
-                component={RestaurantScreen}/>
+                name = "Restaurant" 
+                component={RestaurantScreen}                
+                options={{ headerShown: false }}/>
         </RestaurantStack.Navigator>
     )
 }
