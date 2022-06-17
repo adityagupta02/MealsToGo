@@ -18,7 +18,7 @@ export default function RestaurantDetailsScreen({ route }) {
   return (
     <>
       <SafeAreaView style={{flex:1}}>
-        <RestaurantInfoCard data={restaurant} />
+        <RestaurantInfoCard data={restaurant} detail={true}/>
           <ScrollView>
             <List.Accordion
               title="Breakfast"

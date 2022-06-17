@@ -4,6 +4,7 @@ import { Card, Title, Paragraph } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
+import Favorite from "../../favorite/Favorite";
 
 export default function RestaurantInfoCard(props) {
 
@@ -11,7 +12,8 @@ export default function RestaurantInfoCard(props) {
   return (
     <>
     <View style = {{margin:15}}>
-        <Card elevation={10} onPress={()=>{}}>   
+        <Card elevation={10} onPress={()=>{}}>
+          {props.detail && <Favorite restaurant={props.data}/>  } 
           <Card.Cover source={{ uri: props.data.photos[0]}} />
           <Card.Content>
             <Title  style={{marginTop:10, fontFamily:""}}>{props.data.name}</Title>
