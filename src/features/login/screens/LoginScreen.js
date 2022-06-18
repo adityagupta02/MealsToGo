@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import {StyleSheet, Text, TextInput,  TouchableOpacity, View, ImageBackground} from "react-native";
 import { auth } from "../../../services/firebase/firebase";
 import { AntDesign } from "@expo/vector-icons";
+import { ActivityIndicator, Colors } from "react-native-paper";
 
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const[isLoading, setIsloading]=useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -17,23 +19,27 @@ export const LoginScreen = ({ navigation }) => {
   }, []);
 
   const handleSignUp = () => {
+    setIsloading(true);
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredentials) => {
+        setIsloading(false);
         const user = userCredentials.user;
         console.log("Registered with:", user.email);
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {setIsloading(false); alert(error.message)});
   };
 
   const handleLogin = () => {
+    setIsloading(true);
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userCredentials) => {
+        setIsloading(false);
         const user = userCredentials.user;
         console.log("Logged in with:", user.email);
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {setIsloading(false); alert(error.message)});
   };
 
   const image = {
@@ -46,6 +52,7 @@ export const LoginScreen = ({ navigation }) => {
         <View style={styles.inputContainer}>
           <TextInput
             placeholder="Email"
+            keyboardType="email-address"
             value={email}
             onChangeText={(text) => setEmail(text)}
             style={styles.input}
@@ -58,6 +65,17 @@ export const LoginScreen = ({ navigation }) => {
             secureTextEntry
           />
         </View>
+
+        {isLoading && (
+          <View style={{ position: "absolute", top: "50%", left: "50%" }}>
+            <ActivityIndicator
+              size={50}
+              style={{ marginLeft: -25, zIndex:99 }}
+              animating={true}
+              color={Colors.blue300}
+            />
+          </View>
+        )}
 
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={handleLogin} style={styles.button}>
