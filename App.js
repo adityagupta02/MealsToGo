@@ -1,10 +1,11 @@
-import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, StatusBar } from "react-native";
-
+import React, {useState, useEffect} from 'react';
 import { RestaurantsContextProvider } from './src/services/restaurants/RestaurantContext';
 import { LocationContextProvider } from './src/services/location/LocationContext';
 import { Navigation } from './src/features/navigation';
 import { FavoritesContextProvider } from './src/services/favorites/FavoritesContext';
+
+
+
 
 
 export default function App() {
@@ -20,6 +21,4 @@ export default function App() {
     </>
   )
 }
-const styles = StyleSheet.create({
-  
-});
+
