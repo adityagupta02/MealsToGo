@@ -13,7 +13,7 @@ export default function RestaurantInfoCard(props) {
     <>
     <View style = {{margin:15}}>
         <Card elevation={10} onPress={()=>{}}>
-          {props.detail && <Favorite restaurant={props.data}/>  } 
+          <Favorite restaurant={props.data}/>
           <Card.Cover source={{ uri: props.data.photos[0]}} />
           <Card.Content>
             <Title  style={{marginTop:10, fontFamily:""}}>{props.data.name}</Title>

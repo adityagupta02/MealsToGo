@@ -6,7 +6,7 @@ import CompactRestaurantInfo from '../../restaurants/components/CompactRestauran
 export default function MapCallout({restaurant}) {
   return (
     <>
-      <CompactRestaurantInfo restaurant={restaurant} />
+      <CompactRestaurantInfo restaurant={restaurant} isMap={true}/>
     </>
   )
 }
