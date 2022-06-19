@@ -1,26 +1,18 @@
-import React from 'react'
-
+import React, {useContext} from 'react'
 import { NavigationContainer } from "@react-navigation/native";
-import {createStackNavigator, TransitionPresets} from "@react-navigation/stack";
 import {AppNavigator} from './AppNavigator';
-import { LoginScreen } from '../login/screens/LoginScreen';
+import { AuthNavigator } from './AuthNavigator';
+import { AuthenticationContext } from '../../services/authentication/AuthenticationContext';
 
-
-const AppStack = createStackNavigator();
 
 export const Navigation = ()=>{
+    
+const {isAuthenticated} = useContext(AuthenticationContext);
     return(
         <NavigationContainer>
-        <AppStack.Navigator>
-            <AppStack.Screen
-                name = "Login" 
-                component= {LoginScreen}                
-                options={{ headerShown: false }}/>
-            <AppStack.Screen
-                name = "AppNavigator" 
-                component={AppNavigator}                
-                options={{ headerShown: false }}/>
-        </AppStack.Navigator> 
-        </NavigationContainer>       
+            {isAuthenticated? <AppNavigator/>:(
+                <AuthNavigator/>
+            )}
+        </NavigationContainer>
     )
 }
